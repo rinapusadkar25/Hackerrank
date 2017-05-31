@@ -1,0 +1,9 @@
+Category	:	JAVA 
+Score		:	383
+Rank		:	8097
+Problems Solved	:	12
+
+
+Category	:	30 Days Code Challenge
+Score		:	240
+Problems Solved	:	8
