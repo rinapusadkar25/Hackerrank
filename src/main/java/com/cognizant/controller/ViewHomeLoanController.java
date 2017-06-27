@@ -16,47 +16,35 @@ import com.cognizant.dao.ViewHomeLoanDAO;
 import com.cognizant.entity.ApplyHomeLoan;
 import com.cognizant.entity.UserDetails;
 
-
 @Controller
 public class ViewHomeLoanController {
 
 	@Autowired
 	ViewHomeLoanDAO viewLoanDao;
-	
-	
-	
-	@RequestMapping(value="/viewHomeloan", method=RequestMethod.GET)
-	public String getHomeLoan(Model model, @RequestParam("msg") String msg){
-	
+
+	@RequestMapping(value = "/viewHomeloan", method = RequestMethod.GET)
+	public String getHomeLoan(Model model, @RequestParam("msg") String msg) {
+
 		model.addAttribute("msg", msg);
-	return "viewHomeLoan";
-}
+		return "viewHomeLoan";
+	}
 
 	@RequestMapping(value = "/viewHomeloan1", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody List<UserDetails> getList(Model model, @RequestParam("msg") String msg) {
-
-		//long accountNumber=1254785855236142l;
-				long accountNumber=Long.parseLong(msg);
-		UserDetails userDetails=viewLoanDao.retrieveLoanDetails(accountNumber);
-		userDetails.setApply(null);
-		
-		userDetails.setTransactionDetails(null);
-
-		List<UserDetails> List=new ArrayList<UserDetails>();
-		List<ApplyHomeLoan> hLoan =new ArrayList<ApplyHomeLoan>();
-		List<ApplyHomeLoan> newLoan=new ArrayList<ApplyHomeLoan>();
-		hLoan=userDetails.getHomeLoan();
-		for(int i=0;i<hLoan.size();i++)
-		{
-		ApplyHomeLoan obj=hLoan.get(i);
-		obj.setUserDetails(null);
-		newLoan.add(obj);
+		long accountNumber = Long.parseLong(msg);
+		UserDetails userDetails = viewLoanDao.retrieveLoanDetails(accountNumber);
+		List<UserDetails> List = new ArrayList<UserDetails>();
+		List<ApplyHomeLoan> hLoan = new ArrayList<ApplyHomeLoan>();
+		List<ApplyHomeLoan> newLoan = new ArrayList<ApplyHomeLoan>();
+		hLoan = userDetails.getHomeLoan();
+		for (int i = 0; i < hLoan.size(); i++) {
+			ApplyHomeLoan obj = hLoan.get(i);
+			obj.setUserDetails(null);
+			newLoan.add(obj);
 		}
 		userDetails.setHomeLoan(newLoan);
 		List.add(userDetails);
-System.out.println("controller"+List);
 		return List;
 	}
-	
 
 }

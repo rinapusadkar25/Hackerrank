@@ -33,15 +33,7 @@ public class UserDetails {
 	@Column(name="ACCOUNT_BALANCE")
 	Double accountBalance;
 	
-	@JsonManagedReference 
-	@OneToMany(mappedBy="userDetails", cascade=CascadeType.ALL)
-	private List<TransactionDetails> TransactionDetails;
-	public List<TransactionDetails> getTransactionDetails() {
-		return TransactionDetails;
-	}
-	public void setTransactionDetails(List<TransactionDetails> transactionDetails) {
-		this.TransactionDetails = transactionDetails;
-	}
+	
 	@JsonManagedReference
 	@OneToMany(mappedBy = "userDetails", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<ApplyHomeLoan> homeLoan;
@@ -52,16 +44,7 @@ public class UserDetails {
 	public void setHomeLoan(List<ApplyHomeLoan> homeLoan) {
 		this.homeLoan = homeLoan;
 	}
-	@JsonManagedReference
-	@OneToMany(mappedBy="userDetails",cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	List<ApplyEducationLoan> apply;
 	
-	public List<ApplyEducationLoan> getApply() {
-		return apply;
-	}
-	public void setApply(List<ApplyEducationLoan> apply) {
-		this.apply = apply;
-	}
 	
 	
 	
@@ -103,32 +86,14 @@ public class UserDetails {
 		this.accountHolderName = accountHolderName;
 		this.accountBalance = accountBalance;
 	}
-	public UserDetails(Long accountNumber, String accountType, String accountHolderName, Double accountBalance,
-			List<TransactionDetails> transactionDetails) {
-		super();
-		this.accountNumber = accountNumber;
-		this.accountType = accountType;
-		this.accountHolderName = accountHolderName;
-		this.TransactionDetails = transactionDetails;
-		this.accountBalance = accountBalance;
-	}
-	
-	
-	public UserDetails(long accountNumber, String accountType, String accountHolderName, Double accountBalance,
-			List<ApplyEducationLoan> apply) {
-		super();
-		this.accountNumber = accountNumber;
-		this.accountType = accountType;
-		this.accountHolderName = accountHolderName;
-		this.accountBalance = accountBalance;
-		this.apply = apply;
-	}
+
 	@Override
 	public String toString() {
 		return "UserDetails [accountNumber=" + accountNumber + ", accountType=" + accountType + ", accountHolderName="
-				+ accountHolderName + ", accountBalance=" + accountBalance + ", TransactionDetails="
-				+ TransactionDetails + ", homeLoan=" + homeLoan + ", apply=" + apply + "]";
+				+ accountHolderName + ", accountBalance=" + accountBalance + ", homeLoan=" + homeLoan + "]";
 	}
+	
+
 	
 	
 }

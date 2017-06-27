@@ -59,7 +59,10 @@ font-weight: bold;
     height:50px;
     border: 2px solid #3b5998;
      }
-
+span{
+color: 	red;
+ 
+ }
 button:hover {
     background-color: #3b5998; /* Green */
     color: white;

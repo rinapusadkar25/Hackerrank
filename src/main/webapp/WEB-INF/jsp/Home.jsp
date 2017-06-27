@@ -106,32 +106,7 @@ input:hover {
 	
 		<table class="table">
 			<tr>
-				<td><button>
-						<a
-							href="performtransaction?msg=${msg}">Perform
-							Transaction</a>
-					</button></td>
-			
-					<td>
-				<button>
-						<a
-							href="viewtransaction?msg=${msg}">View
-							Transaction</a>
-					</button></td></tr>
-			<tr>
-				<td><button>
-						<a
-							href="addEducationLoan?msg=${msg}">Apply
-							Education Loan</a>
-					</button></td>
-				<td><button>
-						<a
-							href="view?msg=${msg}">View
-							Education Loan</a>
-					</button></td>
-			</tr>
-
-			<tr>
+				
 				<td><button>
 					<a
 						href="applyHomeLoan?msg=${msg}">Apply
